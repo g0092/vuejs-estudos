@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+
+        <input v-model="novaFruta"> <!-- atribuir variável a um input-->
+        <button v-on:click="inserirFruta">Inserir</button> <!-- No click inserir fruta -->
+
+        <p>Lista de Frutas:</p>
+        <ul>
+            <li v-for="fruta in frutas">{{fruta}}</li>
+            <!--Percorrer elemento fruta dentro de frutas -->
+        </ul>
+        <p>Total: <b>{{totalFrutos}}</b></p> <!-- Exibir total de frutas -->
+
+    </div>
+
+    <script>
+        let root = new Vue({
+            el: "#root",
+            data: {
+                frutas: [], // array de frutas vazio que será modificado depois de acordo com frutas inseridas
+                novaFruta: '', //nova fruta que vem do input
+                totalFrutos: 0
+            },
+            methods: {
+                inserirFruta: function () {
+                    this.frutas.push(this.novaFruta) // inserir frutas no input 
+                    this.novaFruta = '' // limpar input depois de inserir
+                    this.totalFrutos = this.frutas.length // ver o tamanho/total das frutas
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

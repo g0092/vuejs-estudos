@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendendo VUE</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- Criando uma instância -->
+    <div id="root">
+        <p>{{nome}}</p>
+        <input v-model="nome">
+
+        <!-- Usando diretivas: v-if -->
+        <div v-if="visivel">
+            <h3>Div 1</h3>
+        </div>
+
+        <!-- Usando diretivas: v-else -->
+
+        <div v-if="1 == 2">
+            <h4>DIV 1</h4>
+        </div>
+        <div v-else>
+            <h4>DIV 2</h4>
+        </div>
+
+         <!-- Usando metodos -->
+         <button v-on:click='mostrarEsconder'>Click</button>
+         <button v-on:click='metodo1'>Click1</button>
+       
+    </div>
+
+    <script>
+        let root = new Vue({
+            el: "#root",
+            data: {
+                nome: "Este é um nome",
+                visivel: false
+            },
+            // Usando methods
+
+            methods: {
+                mostrarEsconder: function(){
+                    this.visivel = !this.visivel
+                    //esse metodo vai olhar para a varravel visivel e vai mostrar o oposto
+                },
+                //podemos usar mais de um metodo e renomear
+                metodo1: function(){
+                    console.log("Experiência")
+                }
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
