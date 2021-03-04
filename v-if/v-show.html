@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="root">
+        <p v-show="visivel">Primeiro</p> <!-- é acrescentado um style, conteúdo do parágrafo é mantido na DOM, apresenta display none -->
+        <p v-if="visivel">Segundo</p> <!-- elemento substituído por um comentário no html -->
+
+        <div>
+            <button @click="executar">Click</button>
+        </div>
+
+    </div>
+
+    <script>
+        let root = new Vue({
+            el: "#root",
+            data: {
+                visivel: true
+            },
+                methods: {
+                    executar: function(){
+                    this.visivel = !this.visivel
+                } 
+            }
+        })
+    </script>
+    
+</body>
+</html>
