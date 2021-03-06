@@ -8,7 +8,36 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+<!-- NÃO USAR CAMELCASE NO NOME DO COMPONENTE!-->
+    <div id="root">
+        <pai></pai>
+        <!-- não precisa citar o filho, pois já está dentro de pai-->
+    </div>
     
+    <script>
+
+        Vue.component('pai',{
+            template: `
+            <div>
+                <p>Texto do componente pai</p>    
+                <filho></filho>
+            </div>
+            `
+        }) //citar o filho, dentro do pai
+
+        Vue.component('filho',{
+            template: `
+                <p>Texto do componente filho</p>    
+            `
+        })
+
+        let root = new Vue({
+            el: "#root",
+            component: [
+                `pai`
+            ]
+        }); //não precisa citar o filho, pois já está dentro do pai
+    </script> 
     
 </body>
 </html>

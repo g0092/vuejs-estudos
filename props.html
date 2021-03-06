@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <lista-nomes :nomescomponent = 'nomes'></lista-nomes>
+    </div>
+
+    
+    <script>
+
+        //componentes com dados diferentes, como lidar? Usar props! -> props passa dados para componente <cliente nome="José Silva" idade: 100/> props: { nome: String //coloca tipo de dado que vai receber idade: Number}
+
+    Vue.component('lista-nomes',{
+        props:[
+            'nomescomponent'
+        ],
+        template:
+        `
+        <ul>
+            <li v-for="nome in nomescomponent">{{nome}}</li>
+        </ul>
+
+        `
+    })
+
+        let root = new Vue({
+            el: "#root",
+            data: {
+                nomes: [
+                    'João',
+                   'José',
+                   'Joaquim'
+                ]
+            }
+        });
+    </script>
+    
+</body>
+</html>
